@@ -15,22 +15,18 @@ public class RazMain extends JavaPlugin {
 		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[RazSigns] Plugin has been loaded successfully.");
         instance = this;    
         this.registerListeners();
-
     }
     
     private void registerListeners() {
         PluginManager manager = this.getServer().getPluginManager();
 	    manager.registerEvents(new RefillSignListener(this), this);
-	    manager.registerEvents(new TrashSignListener(this), this);
-	    
+	    manager.registerEvents(new TrashSignListener(this), this);	    
     }
     
-    public void onDisable() {
-    	
+    public void onDisable() {	
     }
 
     public static RazMain getInstance() {
         return instance;
-        
       }
 }
