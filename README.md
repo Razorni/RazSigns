@@ -1,2 +1,2 @@
 # RazSigns
-Refill &amp; Trash Bin on Signs (Kitmap / HCF Plugin)
+Refill, FreeBlocks &amp; Trash Bin on Signs (Kitmap / HCF Plugin)
