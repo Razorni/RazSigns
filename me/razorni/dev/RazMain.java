@@ -6,27 +6,31 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.razorni.dev.listeners.RefillSignListener;
 import me.razorni.dev.listeners.TrashSignListener;
+import me.razorni.dev.listeners.FreeBlocksListener;
 
-public class RazMain extends JavaPlugin {
+public class RazSigns extends JavaPlugin {
 	
-    public static RazMain instance;
+    public static RazSigns instance;
     
     public void onEnable() {
 		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[RazSigns] Plugin has been loaded successfully.");
         instance = this;    
         this.registerListeners();
+
     }
     
     private void registerListeners() {
         PluginManager manager = this.getServer().getPluginManager();
 	    manager.registerEvents(new RefillSignListener(this), this);
-	    manager.registerEvents(new TrashSignListener(this), this);	    
-    }
-    
-    public void onDisable() {	
+	    manager.registerEvents(new TrashSignListener(this), this);
+	    manager.registerEvents(new FreeBlocksListener(), this);
+	    
     }
 
-    public static RazMain getInstance() {
+    public void onDisable() {   	
+    }
+	
+    public static RazSigns getInstance() {
         return instance;
       }
 }
