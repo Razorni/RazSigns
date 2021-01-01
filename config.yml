@@ -1,0 +1,25 @@
+###################
+#                 #
+# RazSigns 1.0.0  #
+#                 #
+###################
+
+AUTO-CREATE-SIGN-PERMISSION: "create.sign" # Permission to automatically create the signs with "[Refill]" or "[Trash]".
+
+REFILL-SIGN-LINE-1: "&7[&bRefill&7]"
+REFILL-SIGN-LINE-2: "&3Pots"
+REFILL-SIGN-LINE-3: ""
+REFILL-SIGN-LINE-4: ""
+REFILL-SIGN-INVENTORY-TITLE: "§bRefill Inventory" # FOR TITLES USE "§"
+
+TRASH-SIGN-LINE-1: "&7[&bTrash&7]"
+TRASH-SIGN-LINE-2: "&3Bin"
+TRASH-SIGN-LINE-3: ""
+TRASH-SIGN-LINE-4: ""
+TRASH-SIGN-INVENTORY-TITLE: "§bTrash Bin" # FOR TITLES USE "§"
+
+BLOCKS-SIGN-LINE-1: "&7[&bFree&7]"
+BLOCKS-SIGN-LINE-2: "&3Blocks"
+BLOCKS-SIGN-LINE-3: ""
+BLOCKS-SIGN-LINE-4: ""
+BLOCKS-SIGN-INVENTORY-TITLE: "§bBlocks" # FOR TITLES USE "§"
