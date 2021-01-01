@@ -15,11 +15,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-// Contribute to Marko / drzey
+import me.razorni.dev.RazSigns;
+import me.razorni.dev.utils.CC;
 
 public class FreeBlocksListener implements Listener {
+	
+  private RazSigns plugin = (RazSigns)RazSigns.getPlugin(RazSigns.class);
   
-  private String[] buildingBlocks = new String[] { "&7[&bFree&7]", "&3Blocks", "", "", "[Blocks]" };
+  private String[] buildingBlocks = new String[] { CC.translate(this.plugin.getConfig().getString("BLOCKS-SIGN-LINE-1")), CC.translate(this.plugin.getConfig().getString("BLOCKS-SIGN-LINE-2")), CC.translate(this.plugin.getConfig().getString("BLOCKS-SIGN-LINE-3")), CC.translate(this.plugin.getConfig().getString("BLOCKS-SIGN-LINE-4")), "[Blocks]" };
   
   public boolean isSignEqualTo(Sign sign, String[] to) {
     if (sign.getLines()[0] == null)
@@ -52,7 +55,7 @@ public class FreeBlocksListener implements Listener {
       return; 
     Sign sign = (Sign)block.getState();
       if (isSignEqualTo(sign, this.buildingBlocks)) {
-      Inventory inventory = Bukkit.createInventory(null, 54, ChatColor.translateAlternateColorCodes('&', "&bBlocks"));
+      Inventory inventory = Bukkit.createInventory(null, 54, this.plugin.getConfig().getString("BLOCKS-SIGN-INVENTORY-TITLE"));
       for (Colors colors : Colors.values()) {
         ItemStack item = new ItemStack(Material.WOOL, 64);
         item.setDurability((short)(byte)colors.getDurability());
