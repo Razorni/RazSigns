@@ -1,5 +1,7 @@
 package me.razorni.dev.listeners;
 
+import me.razorni.dev.RazSigns;
+import me.razorni.dev.utils.CC;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
@@ -12,18 +14,18 @@ import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 
-import me.razorni.dev.RazMain;
-import me.razorni.dev.utils.CC;
-
 public class TrashSignListener implements Listener {
-  private String[] lines = new String[] { CC.translate("&7[&bTrash&7]"), CC.translate("&3Bin"), CC.translate(""), CC.translate("") };
+	
+  private RazSigns plugin = (RazSigns)RazSigns.getPlugin(RazSigns.class);
   
-  private String[] error = new String[] { CC.translate("&7[&bTrash&7]"), CC.translate("&3Bin"), CC.translate(""), CC.translate("") };
+  private String[] lines = new String[] { CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-1")), CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-2")), CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-3")), CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-4")) };
   
-  public TrashSignListener(RazMain plugin) {}
+  private String[] error = new String[] { CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-1")), CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-2")), CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-3")), CC.translate(this.plugin.getConfig().getString("TRASH-SIGN-LINE-4")) };
+  
+  public TrashSignListener(RazSigns plugin) {}
   
   public Inventory openMainInventory(Player player) {
-    Inventory inv = Bukkit.createInventory(null, 36, "§bTrash");
+    Inventory inv = Bukkit.createInventory(null, 36, this.plugin.getConfig().getString("TRASH-SIGN-INVENTORY-TITLE"));
     player.openInventory(inv);
     return inv;
   }
@@ -32,7 +34,7 @@ public class TrashSignListener implements Listener {
   public void onSignPlace(SignChangeEvent event) {
     if (event.getLine(0).equals("[Trash]")) {
       Player player = event.getPlayer();
-      if (player.hasPermission("hcf.comamnd.*")) {
+      if (player.hasPermission(this.plugin.getConfig().getString("AUTO-CREATE-SIGN-PERMISSION"))) {
         for (int i = 0; i < this.lines.length; i++)
           event.setLine(i, this.lines[i]); 
       } else {
