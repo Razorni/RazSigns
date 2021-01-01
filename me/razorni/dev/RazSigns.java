@@ -13,7 +13,9 @@ public class RazSigns extends JavaPlugin {
     public static RazSigns instance;
     
     public void onEnable() {
-		Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[RazSigns] Plugin has been loaded successfully.");
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[RazSigns] Plugin has been enabled successfully.");
         instance = this;    
         this.registerListeners();
 
@@ -26,11 +28,13 @@ public class RazSigns extends JavaPlugin {
 	    manager.registerEvents(new FreeBlocksListener(), this);
 	    
     }
-
-    public void onDisable() {   	
+    
+    public void onDisable() {
+    	Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[RazSigns] Plugin has been disabled successfully.");	
     }
-	
+
     public static RazSigns getInstance() {
         return instance;
+        
       }
 }
