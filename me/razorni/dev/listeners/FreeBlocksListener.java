@@ -21,7 +21,7 @@ import me.razorni.dev.utils.CC;
 
 Contribute to Marko
 
-*//
+*/
 
 public class FreeBlocksListener implements Listener {
 	
